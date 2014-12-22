@@ -17,8 +17,8 @@ namespace IisExpressLauncher
         private const string defaultPortNo = "8080";
         private const string localHostName = "localhost";
         private List<string> installationPaths = new List<string> { 
-            @"C:\Program Files (x86)\IIS Expressa\",
-            @"C:\Program Files\IIS Expressa\"
+            @"C:\Program Files (x86)\IIS Express\",
+            @"C:\Program Files\IIS Express\"
         };
         private const string iisExpressExeName = "iisexpress.exe";
         private const string settingPreviousWebsitePath = "PreviousWebsitePath";
@@ -33,7 +33,7 @@ namespace IisExpressLauncher
 
         private void SetDefaults()
         {
-            this.Visible = true; 
+            this.Visible = true;
 
             tbxWebSiteDir.Text = Properties.Settings.Default[settingPreviousWebsitePath].ToString();
             tbxPortNo.Text = Properties.Settings.Default[settingPreviousPortNo].ToString();
@@ -130,7 +130,7 @@ namespace IisExpressLauncher
         {
             if (!File.Exists(Path.Combine(tbxPathToIisExpress.Text, iisExpressExeName)))
             {
-                ShowFeedback(string.Format("{0} was not found at the path sprcified.", iisExpressExeName));
+                ShowFeedback(string.Format("{0} was not found at the path specified.", iisExpressExeName));
             }
             else
             {
@@ -187,7 +187,7 @@ namespace IisExpressLauncher
             return fbd.SelectedPath;
         }
 
-        private int GetFeedbackLabelHeight() 
+        private int GetFeedbackLabelHeight()
         {
             using (Graphics g = CreateGraphics())
             {
