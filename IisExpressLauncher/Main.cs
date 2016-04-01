@@ -118,12 +118,22 @@ namespace IisExpressLauncher
 
         private void btnSelectDir_Click(object sender, EventArgs e)
         {
-            tbxWebSiteDir.Text = ChooseFolderPath();
+            string newPath = ChooseFolderPath();
+
+            if (newPath != null)
+            {
+                tbxWebSiteDir.Text = newPath;
+            }
         }
 
         private void btnChoosePathToIisExpress_Click(object sender, EventArgs e)
         {
-            tbxPathToIisExpress.Text = ChooseFolderPath();
+            string newPath = ChooseFolderPath();
+
+            if (newPath != null)
+            {
+                tbxPathToIisExpress.Text = newPath;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -179,12 +189,22 @@ namespace IisExpressLauncher
             return retVal;
         }
 
+        /// <summary>
+        /// Get the path selected by the user.
+        /// </summary>
+        /// <returns>A string representing the Folder path or null</returns>
         private string ChooseFolderPath()
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            DialogResult result = fbd.ShowDialog();
 
-            return fbd.SelectedPath;
+
+            string result = null;
+            if (fbd.ShowDialog() == DialogResult.OK && Directory.Exists(fbd.SelectedPath))
+            {
+                result = fbd.SelectedPath;
+            }
+
+            return result;
         }
 
         private int GetFeedbackLabelHeight()
